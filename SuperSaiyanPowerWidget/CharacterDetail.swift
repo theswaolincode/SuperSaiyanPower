@@ -45,10 +45,10 @@ struct CharacterDetail: Hashable, Identifiable {
     
     static let gohan = CharacterDetail(
         name: "Gohan",
-        avatar: "🦄",
+        avatar: "🧸",
         kiPower: 800,
         heroType: "Super Saiyan",
-        image: UIImage(named: "goahan_chilling")!,
+        image: UIImage(named: "gohan_chilling")!,
         bio: "")
     
     static let availableCharacters = [goku, vegeta, trunks, gohan]
@@ -62,13 +62,22 @@ struct CharacterDetail: Hashable, Identifiable {
             return character.name == name
         })
     }
+    
+//    var fullHealthDate: Date {
+//        let healthNeeded = min(1 - healthLevel, 1)
+//        let hoursUntilFullHealth = healthNeeded / healthRecoveryRatePerHour
+//        let minutesUntilFullHealth = (hoursUntilFullHealth * 60)
+//        let date = Calendar.current.date(byAdding: .minute, value: Int(minutesUntilFullHealth), to: Date())
+//        
+//        return date ?? Date()
+//    }
 }
 
 extension CharacterDetail {
     static let superSaiyanGoku = CharacterDetail(
         name: "Goku",
         avatar: "☁️",
-        kiPower: 1000,
+        kiPower: 5000,
         heroType: "Super Saiyan",
         image: UIImage(named: "goku_super_saiyan")!,
         bio: "")
@@ -76,7 +85,7 @@ extension CharacterDetail {
     static let superSaiyanVegeta = CharacterDetail(
         name: "Vegeta",
         avatar: "😎",
-        kiPower: 999,
+        kiPower: 4000,
         heroType: "Super Saiyan",
         image: UIImage(named: "vegeta_super_saiyan")!,
         bio: "")
@@ -84,19 +93,19 @@ extension CharacterDetail {
     static let superSaiyanTrunks = CharacterDetail(
         name: "Trunks",
         avatar: "🦄",
-        kiPower: 800,
+        kiPower: 3000,
         heroType: "Super Saiyan",
         image: UIImage(named: "trunks_super_saiyan")!,
         bio: "")
     
     static let superSaiyanGohan = CharacterDetail(
         name: "Gohan",
-        avatar: "🦄",
-        kiPower: 800,
+        avatar: "🧸",
+        kiPower: 3500,
         heroType: "Super Saiyan",
-        image: UIImage(named: "goahan_super_saiyan")!,
+        image: UIImage(named: "gohan_super_saiyan")!,
         bio: "")
     
-    static let superSaiyanCharacters = [goku, vegeta, trunks, gohan]
+    static let superSaiyanCharacters = [superSaiyanGoku, superSaiyanVegeta, superSaiyanTrunks, superSaiyanGohan]
 }
 

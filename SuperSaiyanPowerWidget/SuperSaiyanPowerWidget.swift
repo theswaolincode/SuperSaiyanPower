@@ -21,7 +21,7 @@ struct Provider: IntentTimelineProvider {
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), character: .goku, isSuperSaiyan: configuration.isSuperSaiyan as? Bool ?? false)
+        let entry = SimpleEntry(date: Date(), character: .goku)
         completion(entry)
     }
 
@@ -32,12 +32,9 @@ struct Provider: IntentTimelineProvider {
         let currentDate = Date()
         let selectedCharacter = character(for: configuration)
         
-        if let diff = Calendar.current.dateComponents([.minute], from: lastEntry.date, to: Date()).minute, diff > 5 {
-               //do something
-            print("Over 5 minute")
-           }
+        if let diff = Calendar.current.dateComponents([.minute], from: lastEntry.date, to: Date()).minute, diff > 5 { print("Over 5 minute") }
 
-        entry = SimpleEntry(date: currentDate, character: selectedCharacter, isSuperSaiyan: configuration.isSuperSaiyan as? Bool ?? false)
+        entry = SimpleEntry(date: currentDate, character: selectedCharacter)
         
         let timeToReload = Calendar.current.date(byAdding: .minute, value: 5, to: Date())!
         policy = .after(timeToReload)
@@ -52,7 +49,7 @@ struct Provider: IntentTimelineProvider {
     func character(for configuration: ConfigurationIntent) -> CharacterDetail {
         let isSuperSaiyan = configuration.isSuperSaiyan as? Bool ?? false
         let character: CharacterDetail
-        switch configuration.hero {
+        switch configuration.saiyans {
         case .goku: character = isSuperSaiyan ? .superSaiyanGoku : .goku
         case .vegeta: character = isSuperSaiyan ? .superSaiyanVegeta : .vegeta
         case .trunks: character = isSuperSaiyan ? .superSaiyanTrunks : .trunks
@@ -66,8 +63,6 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let character: CharacterDetail
-    var isSuperSaiyan: Bool = false
-    
 }
 
 struct SuperSaiyanPowerWidgetEntryView : View {
@@ -92,7 +87,7 @@ struct SuperSaiyanPowerWidget: Widget {
         }
         .configurationDisplayName("Feel the Super Saiyan Power")
         .description("Discover Dragon Ball Saiyans.")
-        .supportedFamilies([.systemSmall, .systemLarge])
+//        .supportedFamilies([.systemSmall, .systemLarge])
     }
 }
 
