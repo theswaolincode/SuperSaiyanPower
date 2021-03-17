@@ -21,7 +21,7 @@ struct Provider: IntentTimelineProvider {
     }
 
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), character: .goku)
+        let entry = SimpleEntry(date: Date(), character: .goku, isSuperSaiyan: configuration.isSuperSaiyan as? Bool ?? false)
         completion(entry)
     }
 
@@ -29,28 +29,18 @@ struct Provider: IntentTimelineProvider {
         var entries: [SimpleEntry] = []
         var policy: TimelineReloadPolicy
         var entry: SimpleEntry
-
         let currentDate = Date()
-        let selectedCharacter: CharacterDetail
-        selectedCharacter = .goku
+        let selectedCharacter = character(for: configuration)
         
         if let diff = Calendar.current.dateComponents([.minute], from: lastEntry.date, to: Date()).minute, diff > 5 {
                //do something
             print("Over 5 minute")
            }
 
-        if configuration.isSuperSaiyan as? Bool ?? false {
-//            configuration.isSuperSaiyan = 0
-//            configuration.didChangeValue(forKey: "isSuperSaiyan")
-            entry = SimpleEntry(date: currentDate, character: selectedCharacter, isSuperSaiyan: configuration.isSuperSaiyan as? Bool ?? false)
-            
-            let timeToReload = Calendar.current.date(byAdding: .minute, value: 5, to: Date())!
-            policy = .after(timeToReload)
-
-        }else {
-            entry = SimpleEntry(date: currentDate, character: selectedCharacter, isSuperSaiyan: configuration.isSuperSaiyan as? Bool ?? false)
-            policy = .never
-        }
+        entry = SimpleEntry(date: currentDate, character: selectedCharacter, isSuperSaiyan: configuration.isSuperSaiyan as? Bool ?? false)
+        
+        let timeToReload = Calendar.current.date(byAdding: .minute, value: 5, to: Date())!
+        policy = .after(timeToReload)
 
         lastEntry = entry
         entries.append(entry)
@@ -59,14 +49,18 @@ struct Provider: IntentTimelineProvider {
 
     }
     
-//    func character(for configuration: DynamicCharacterSelectionIntent) -> CharacterDetail {
-//        if let name = configuration.hero?.identifier, let character = CharacterDetail.characterFromName(name: name) {
-//            // Save the last selected character to our App Group.
-//            CharacterDetail.setLastSelectedCharacter(heroName: name)
-//            return character
-//        }
-//        return .goku
-//    }
+    func character(for configuration: ConfigurationIntent) -> CharacterDetail {
+        let isSuperSaiyan = configuration.isSuperSaiyan as? Bool ?? false
+        let character: CharacterDetail
+        switch configuration.hero {
+        case .goku: character = isSuperSaiyan ? .superSaiyanGoku : .goku
+        case .vegeta: character = isSuperSaiyan ? .superSaiyanVegeta : .vegeta
+        case .trunks: character = isSuperSaiyan ? .superSaiyanTrunks : .trunks
+        case .gohan: character = isSuperSaiyan ? .superSaiyanGohan : .gohan
+        default : return .goku
+        }
+        return character
+    }
 }
 
 struct SimpleEntry: TimelineEntry {
@@ -81,17 +75,9 @@ struct SuperSaiyanPowerWidgetEntryView : View {
 
     var body: some View {
         ZStack {
-            if entry.isSuperSaiyan {
-                Image("goku_super_saiyan")
-                    .resizable()
-                    .scaledToFit()
-                Text("\(entry.date, style: .timer)")
-            }else {
-                Image("goku_chilling")
-                    .resizable()
-                    .scaledToFit()
-            }
-
+            Image(uiImage: entry.character.image)
+                .resizable()
+                .scaledToFit()
         }
     }
 }
@@ -105,7 +91,8 @@ struct SuperSaiyanPowerWidget: Widget {
             SuperSaiyanPowerWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Feel the Super Saiyan Power")
-        .description("This is an example widget.")
+        .description("Discover Dragon Ball Saiyans.")
+        .supportedFamilies([.systemSmall, .systemLarge])
     }
 }
 
