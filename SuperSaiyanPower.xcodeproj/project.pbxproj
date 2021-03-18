@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4456D5D2602835500C616C8 /* CharacterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB698260208D7007036C5 /* CharacterDetail.swift */; };
+		C48528D72603B98C000051AB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48528D62603B98C000051AB /* DetailView.swift */; };
 		C4FAB66A2602078E007036C5 /* SuperSaiyanPowerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB6692602078E007036C5 /* SuperSaiyanPowerApp.swift */; };
 		C4FAB66C2602078E007036C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB66B2602078E007036C5 /* ContentView.swift */; };
 		C4FAB66E2602078F007036C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4FAB66D2602078F007036C5 /* Assets.xcassets */; };
@@ -46,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C48528D62603B98C000051AB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C4FAB6662602078E007036C5 /* SuperSaiyanPower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperSaiyanPower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4FAB6692602078E007036C5 /* SuperSaiyanPowerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSaiyanPowerApp.swift; sourceTree = "<group>"; };
 		C4FAB66B2602078E007036C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +111,7 @@
 				C4FAB67926020799007036C5 /* SuperSaiyanPower.entitlements */,
 				C4FAB6692602078E007036C5 /* SuperSaiyanPowerApp.swift */,
 				C4FAB66B2602078E007036C5 /* ContentView.swift */,
+				C48528D62603B98C000051AB /* DetailView.swift */,
 				C4FAB66D2602078F007036C5 /* Assets.xcassets */,
 				C4FAB6722602078F007036C5 /* Info.plist */,
 				C4FAB66F2602078F007036C5 /* Preview Content */,
@@ -244,8 +248,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4456D5D2602835500C616C8 /* CharacterDetail.swift in Sources */,
 				C4FAB66C2602078E007036C5 /* ContentView.swift in Sources */,
 				C4FAB68C260207B6007036C5 /* SuperSaiyanPowerWidget.intentdefinition in Sources */,
+				C48528D72603B98C000051AB /* DetailView.swift in Sources */,
 				C4FAB66A2602078E007036C5 /* SuperSaiyanPowerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
