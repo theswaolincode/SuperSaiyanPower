@@ -12,42 +12,50 @@ struct DetailView: View {
     let character: CharacterDetail
     
     var body: some View {
-        VStack {
+        List{
             VStack {
-                Text(character.name)
-                    .font(.largeTitle)
-                    .bold()
-                    .padding()
-                    .clipped()
+                VStack {
+                    Text(character.name)
+                        .font(.largeTitle)
+                        .bold()
+                        .padding()
+                        .clipped()
+                    
+                    Text("\(character.bio)")
+                        .font(.callout)
+                        .padding()
+                    
+                    //                Spacer ()
+                    
+                    Text("KI: \(Int(character.kiPower))")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding()
+                        .clipped()
+                        .gradientForeground(colors: [Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)), Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))])
+                }
                 
-                Text("\(character.bio)")
-                    .font(.callout)
-                    .padding()
+                Image(uiImage: character.image)
+                    .resizable()
+                    .scaledToFit()
                 
-                //                Spacer ()
-                
-                Text("KI: \(character.kiPower)")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding()
-                    .clipped()
-                    .foregroundColor(.white)
             }
-            
-            Image(uiImage: character.image)
-                .resizable()
-                .scaledToFit()
-        }.frame(minWidth: 0,
-               maxWidth: .infinity,
-               minHeight: 0,
-               maxHeight: .infinity,
-               alignment: .topLeading)
-        .background(Color.red)
+        }
+        
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         DetailView(character: .goku)
+    }
+}
+
+extension View {
+    public func gradientForeground(colors: [Color]) -> some View {
+        self.overlay(LinearGradient(gradient: .init(colors: colors),
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing))
+            .mask(self)
     }
 }

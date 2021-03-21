@@ -65,6 +65,16 @@
 					<key>INEnumValueName</key>
 					<string>gohan</string>
 				</dict>
+				<dict>
+					<key>INEnumValueDisplayName</key>
+					<string>show all</string>
+					<key>INEnumValueDisplayNameID</key>
+					<string>pvyAzx</string>
+					<key>INEnumValueIndex</key>
+					<integer>5</integer>
+					<key>INEnumValueName</key>
+					<string>showAll</string>
+				</dict>
 			</array>
 		</dict>
 	</array>
@@ -92,7 +102,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>5</integer>
+			<integer>13</integer>
 			<key>INIntentName</key>
 			<string>Configuration</string>
 			<key>INIntentParameters</key>
@@ -206,6 +216,63 @@
 					<integer>2</integer>
 					<key>INIntentParameterType</key>
 					<string>Boolean</string>
+				</dict>
+				<dict>
+					<key>INIntentParameterConfigurable</key>
+					<true/>
+					<key>INIntentParameterDisplayName</key>
+					<string>Seconds To Change</string>
+					<key>INIntentParameterDisplayNameID</key>
+					<string>e8JPym</string>
+					<key>INIntentParameterDisplayPriority</key>
+					<integer>3</integer>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultUnit</key>
+						<string>Seconds</string>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<real>10</real>
+						<key>INIntentParameterMetadataMaximumUnit</key>
+						<string>Days</string>
+						<key>INIntentParameterMetadataMaximumValue</key>
+						<real>120</real>
+						<key>INIntentParameterMetadataMinimumUnit</key>
+						<string>Seconds</string>
+						<key>INIntentParameterMetadataMinimumValue</key>
+						<real>10</real>
+						<key>INIntentParameterMetadataUnit</key>
+						<string>Seconds</string>
+					</dict>
+					<key>INIntentParameterName</key>
+					<string>secondsToChange</string>
+					<key>INIntentParameterPromptDialogs</key>
+					<array>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Configuration</string>
+						</dict>
+						<dict>
+							<key>INIntentParameterPromptDialogCustom</key>
+							<true/>
+							<key>INIntentParameterPromptDialogType</key>
+							<string>Primary</string>
+						</dict>
+					</array>
+					<key>INIntentParameterRelationship</key>
+					<dict>
+						<key>INIntentParameterRelationshipParentName</key>
+						<string>saiyans</string>
+						<key>INIntentParameterRelationshipPredicateName</key>
+						<string>EnumHasExactValue</string>
+						<key>INIntentParameterRelationshipPredicateValue</key>
+						<string>showAll</string>
+					</dict>
+					<key>INIntentParameterTag</key>
+					<integer>13</integer>
+					<key>INIntentParameterType</key>
+					<string>TimeInterval</string>
 				</dict>
 			</array>
 			<key>INIntentResponse</key>

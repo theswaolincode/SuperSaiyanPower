@@ -9,11 +9,6 @@ import WidgetKit
 import SwiftUI
 import Intents
 
-import WidgetKit
-import SwiftUI
-import Intents
-
-private var lastEntry = SimpleEntry(date: Date(), character: .goku)
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
@@ -27,23 +22,25 @@ struct Provider: IntentTimelineProvider {
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
-        var policy: TimelineReloadPolicy
-        var entry: SimpleEntry
         let currentDate = Date()
-        let selectedCharacter = character(for: configuration)
+        var offsetInterval = 0
         
-        if let diff = Calendar.current.dateComponents([.minute], from: lastEntry.date, to: Date()).minute, diff > 5 { print("Over 5 minute") }
+        if configuration.saiyans == .showAll {
+            var charactersArray = [CharacterDetail]()
+            charactersArray = configuration.isSuperSaiyan as? Bool ?? false ? CharacterDetail.superSaiyanCharacters : CharacterDetail.availableCharacters
+            for character in charactersArray {
+                let entryDate = Calendar.current.date(byAdding: .minute, value: offsetInterval, to: currentDate)!
+                print(entryDate)
+                entries.append(SimpleEntry(date: entryDate, character: character, showAll: true))
+                offsetInterval += 1
+            }
+        }else {
+            let selectedCharacter = character(for: configuration)
+            entries.append(SimpleEntry(date: currentDate, character: selectedCharacter))
+        }
         
-        entry = SimpleEntry(date: currentDate, character: selectedCharacter)
-        
-        let timeToReload = Calendar.current.date(byAdding: .minute, value: 5, to: Date())!
-        policy = .after(timeToReload)
-        
-        lastEntry = entry
-        entries.append(entry)
-        let timeline = Timeline(entries: entries, policy: policy)
+        let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
-        
     }
     
     func character(for configuration: ConfigurationIntent) -> CharacterDetail {
@@ -63,43 +60,28 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let character: CharacterDetail
+    var showAll: Bool = false
 }
 
 struct SuperSaiyanPowerWidgetEntryView : View {
     var entry: Provider.Entry
-    @State var timeRemaining = 10
     
     
     var body: some View {
         ZStack {
-            CircleView()
-
             Link(destination: entry.character.url) {
                 Image(uiImage: entry.character.image)
                     .resizable()
                     .scaledToFit()
+                    .widgetURL(entry.character.url)
+            }
+            if entry.showAll {
+                Text(entry.date, style: .timer)
             }
         }
     }
 }
 
-struct CircleView: View {
-    
-    var body: some View {
-        VStack() {
-            Circle()
-                .trim(from: 0.2, to: 1)
-                .stroke(
-                    LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)), Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))]), startPoint: .topTrailing, endPoint: .bottomLeading),
-                    style: StrokeStyle(lineWidth: 5, lineCap: .round)
-                )
-                .frame(width: 150, height: 100)
-                .padding(6)
-
-        }
-        .padding(6)
-    }
-}
 
 @main
 struct SuperSaiyanPowerWidget: Widget {
