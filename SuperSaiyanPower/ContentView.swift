@@ -84,8 +84,6 @@ struct CircleView: View {
                 .frame(width: 150, height: 100)
                 .padding(6)
             Text("\(kiPower)")
-
-
         }
         .padding(6)
     }

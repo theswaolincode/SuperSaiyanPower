@@ -68,14 +68,6 @@ struct CharacterDetail: Hashable, Identifiable {
         })
     }
     
-//    var fullHealthDate: Date {
-//        let healthNeeded = min(1 - healthLevel, 1)
-//        let hoursUntilFullHealth = healthNeeded / healthRecoveryRatePerHour
-//        let minutesUntilFullHealth = (hoursUntilFullHealth * 60)
-//        let date = Calendar.current.date(byAdding: .minute, value: Int(minutesUntilFullHealth), to: Date())
-//        
-//        return date ?? Date()
-//    }
 }
 
 extension CharacterDetail {

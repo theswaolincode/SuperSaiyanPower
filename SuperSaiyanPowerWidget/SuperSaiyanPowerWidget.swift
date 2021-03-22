@@ -93,7 +93,6 @@ struct SuperSaiyanPowerWidget: Widget {
         }
         .configurationDisplayName("Feel the Super Saiyan Power")
         .description("Discover Dragon Ball Saiyans.")
-        //        .supportedFamilies([.systemSmall, .systemLarge])
     }
 }
 
@@ -107,5 +106,10 @@ struct SuperSaiyanPowerWidget_Previews: PreviewProvider {
         
         SuperSaiyanPowerWidgetEntryView(entry: SimpleEntry(date: Date(), character: .goku))
             .previewContext(WidgetPreviewContext(family: .systemLarge))
+        
+        SuperSaiyanPowerWidgetEntryView(entry: SimpleEntry(date: Date(), character: .goku))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .redacted(reason: .placeholder)
+
     }
 }
