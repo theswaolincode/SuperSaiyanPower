@@ -13,7 +13,7 @@ struct ContentView: View {
     @State var vegetaActive: Bool = false
     @State var trunksActive: Bool = false
     @State var gohanActive: Bool = false
-    
+
     
     var body: some View {
         
@@ -62,7 +62,7 @@ struct TableRow: View {
             
             Spacer()
             
-            CircleView(kiPower: Int(character.kiPower))
+            CircleView(kiPower:String(character.kiPower))
             
             Text(character.name)
         }.frame(height: 200)
@@ -70,8 +70,7 @@ struct TableRow: View {
 }
 
 struct CircleView: View {
-    
-    let kiPower: Int
+    let kiPower: String
     
     var body: some View {
         ZStack() {
@@ -81,9 +80,14 @@ struct CircleView: View {
                     LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)), Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))]), startPoint: .topTrailing, endPoint: .bottomLeading),
                     style: StrokeStyle(lineWidth: 10, lineCap: .round)
                 )
-                .frame(width: 150, height: 100)
+                .frame(width: 150, height: 125)
                 .padding(6)
-            Text("\(kiPower)")
+            VStack {
+                Text("KI POWER")
+                    .bold()
+                Text("\(kiPower)")
+            }
+            
         }
         .padding(6)
     }

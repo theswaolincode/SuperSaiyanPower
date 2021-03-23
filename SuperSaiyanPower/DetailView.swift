@@ -24,10 +24,8 @@ struct DetailView: View {
                     Text("\(character.bio)")
                         .font(.callout)
                         .padding()
-                    
-                    //                Spacer ()
-                    
-                    Text("KI: \(Int(character.kiPower))")
+                                        
+                    Text("KI: \(String(character.kiPower))")
                         .font(.largeTitle)
                         .bold()
                         .padding()

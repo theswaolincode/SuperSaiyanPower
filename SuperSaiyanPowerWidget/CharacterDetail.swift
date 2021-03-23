@@ -23,7 +23,7 @@ struct CharacterDetail: Hashable, Identifiable {
     static let goku = CharacterDetail(
         name: "Goku",
         avatar: "☁️",
-        kiPower: 1000,
+        kiPower: 1000.0,
         heroType: "Super Saiyan",
         image: UIImage(named: "goku_chilling")!,
         bio: "(孫そん悟ご空くう Son Gokū), born Kakarot (カカロット Kakarotto), is the main protagonist of the Dragon Ball metaseries. Goku is a Saiyan originally sent to destroy Earth as an infant. However, a head injury at an early age alters his memory, ridding him of his initial destructive nature and allowing him to grow up to become one of Earth's greatest defenders. He constantly strives and trains to be the greatest warrior possible, which has kept the Earth and the universe safe from destruction many times.",
