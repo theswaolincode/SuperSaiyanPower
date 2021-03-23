@@ -159,7 +159,6 @@ struct DescriptionView: View {
 }
 
 
-@main
 struct SuperSaiyanPowerWidget: Widget {
     let kind: String = "SuperSaiyanPowerWidget"
     

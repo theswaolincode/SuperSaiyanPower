@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C4456D5D2602835500C616C8 /* CharacterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB698260208D7007036C5 /* CharacterDetail.swift */; };
 		C48528D72603B98C000051AB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48528D62603B98C000051AB /* DetailView.swift */; };
+		C4C014A8260A49BC0054D912 /* SuperSaiyanStagesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C014A7260A49BC0054D912 /* SuperSaiyanStagesWidget.swift */; };
 		C4FAB66A2602078E007036C5 /* SuperSaiyanPowerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB6692602078E007036C5 /* SuperSaiyanPowerApp.swift */; };
 		C4FAB66C2602078E007036C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB66B2602078E007036C5 /* ContentView.swift */; };
 		C4FAB66E2602078F007036C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4FAB66D2602078F007036C5 /* Assets.xcassets */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		C48528D62603B98C000051AB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C4C014A7260A49BC0054D912 /* SuperSaiyanStagesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSaiyanStagesWidget.swift; sourceTree = "<group>"; };
 		C4FAB6662602078E007036C5 /* SuperSaiyanPower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperSaiyanPower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4FAB6692602078E007036C5 /* SuperSaiyanPowerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSaiyanPowerApp.swift; sourceTree = "<group>"; };
 		C4FAB66B2602078E007036C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				C4FAB685260207B5007036C5 /* SuperSaiyanPowerWidget.swift */,
+				C4C014A7260A49BC0054D912 /* SuperSaiyanStagesWidget.swift */,
 				C4FAB698260208D7007036C5 /* CharacterDetail.swift */,
 				C4FAB687260207B5007036C5 /* SuperSaiyanPowerWidget.intentdefinition */,
 				C4FAB688260207B6007036C5 /* Assets.xcassets */,
@@ -263,6 +266,7 @@
 				C4FAB699260208D7007036C5 /* CharacterDetail.swift in Sources */,
 				C4FAB686260207B5007036C5 /* SuperSaiyanPowerWidget.swift in Sources */,
 				C4FAB68B260207B6007036C5 /* SuperSaiyanPowerWidget.intentdefinition in Sources */,
+				C4C014A8260A49BC0054D912 /* SuperSaiyanStagesWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
