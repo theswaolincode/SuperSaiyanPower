@@ -23,6 +23,7 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
         let currentDate = Date()
+        print("mirror test")
         
         if configuration.saiyans == .showAll {
             var charactersArray = [CharacterDetail]()
