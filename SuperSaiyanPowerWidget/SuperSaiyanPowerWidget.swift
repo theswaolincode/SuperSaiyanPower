@@ -67,37 +67,52 @@ struct SuperSaiyanPowerWidgetEntryView : View {
     
     var body: some View {
         switch widgetFamily {
-        case .systemMedium:
-            ZStack {
-                HStack{
-                    if entry.showAll {
-                        TimerView(date: entry.date)
-                            .frame(minWidth: 0, maxWidth: 60, minHeight: 0, maxHeight: 200)
-                    }
-                    VStack {
-                        Link(destination: entry.character.url) {
-                            Image(uiImage: entry.character.image)
-                                .resizable()
-                                .scaledToFit()
-                                .widgetURL(entry.character.url)
-                        }
-                    }
-                    DescriptionView(name: entry.character.name, kiPower: String(entry.character.kiPower), avatar: entry.character.avatar)
-                }
-                .padding(.all)
+        case .systemMedium: systemMediumLayout(entry: entry)
+        default: systemDefault(entry: entry)
+          
+        }
+    }
+}
+
+struct systemDefault: View {
+    var entry: Provider.Entry
+
+    var body: some View {
+        ZStack {
+            Link(destination: entry.character.url) {
+                Image(uiImage: entry.character.image)
+                    .resizable()
+                    .scaledToFit()
+                    .widgetURL(entry.character.url)
             }
-        default:
-            ZStack {
-                Link(destination: entry.character.url) {
-                    Image(uiImage: entry.character.image)
-                        .resizable()
-                        .scaledToFit()
-                        .widgetURL(entry.character.url)
-                }
+            if entry.showAll {
+                TimerView(date: entry.date)
+            }
+        }
+    }
+}
+
+struct systemMediumLayout: View{
+    var entry: Provider.Entry
+
+    var body: some View {
+        ZStack {
+            HStack{
                 if entry.showAll {
                     TimerView(date: entry.date)
+                        .frame(minWidth: 0, maxWidth: 60, minHeight: 0, maxHeight: 200)
                 }
+                VStack {
+                    Link(destination: entry.character.url) {
+                        Image(uiImage: entry.character.image)
+                            .resizable()
+                            .scaledToFit()
+                            .widgetURL(entry.character.url)
+                    }
+                }
+                DescriptionView(name: entry.character.name, kiPower: String(entry.character.kiPower), avatar: entry.character.avatar)
             }
+            .padding(.all)
         }
     }
 }
@@ -154,6 +169,7 @@ struct SuperSaiyanPowerWidget: Widget {
         }
         .configurationDisplayName("Feel the Super Saiyan Power")
         .description("Discover Dragon Ball Saiyans.")
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 
@@ -164,10 +180,7 @@ struct SuperSaiyanPowerWidget_Previews: PreviewProvider {
         
         SuperSaiyanPowerWidgetEntryView(entry: SimpleEntry(date: Date(), character: .goku))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
-        
-        SuperSaiyanPowerWidgetEntryView(entry: SimpleEntry(date: Date(), character: .goku))
-            .previewContext(WidgetPreviewContext(family: .systemLarge))
-        
+                
         SuperSaiyanPowerWidgetEntryView(entry: SimpleEntry(date: Date(), character: .goku))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
             .redacted(reason: .placeholder)
