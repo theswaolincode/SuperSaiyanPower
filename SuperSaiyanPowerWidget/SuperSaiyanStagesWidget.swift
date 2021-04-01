@@ -13,11 +13,11 @@ import Intents
 struct SuperSaiyanStagesProvider: TimelineProvider {
     
     func placeholder(in context: Context) -> SuperSaiyanStagesEntry {
-        SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanStage(ssURL: "", ssName: "", bio: "")])
+        SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanStage(ssURL: "image", ssName: "example placeholder", bio: "")])
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SuperSaiyanStagesEntry) -> Void) {
-        let entry = SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanStage(ssURL: "", ssName: "", bio: "")])
+        let entry = SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanStage(ssURL: "image", ssName: "example snapshot", bio: "")])
         completion(entry)
     }
     
