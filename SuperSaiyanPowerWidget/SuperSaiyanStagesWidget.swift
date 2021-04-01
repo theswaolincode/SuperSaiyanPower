@@ -13,11 +13,11 @@ import Intents
 struct SuperSaiyanStagesProvider: TimelineProvider {
     
     func placeholder(in context: Context) -> SuperSaiyanStagesEntry {
-        SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanModelResponse(url: "", title: "", bio: "")])
+        SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanStage(ssURL: "", ssName: "", bio: "")])
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SuperSaiyanStagesEntry) -> Void) {
-        let entry = SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanModelResponse(url: "", title: "", bio: "")])
+        let entry = SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanStage(ssURL: "", ssName: "", bio: "")])
         completion(entry)
     }
     
@@ -29,7 +29,7 @@ struct SuperSaiyanStagesProvider: TimelineProvider {
 
             switch saiyanStagesResponse {
             case .Failure:
-                entries.append(SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanModelResponse(url: "", title: "", bio: "")]))
+                entries.append(SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanStage(ssURL: "", ssName: "", bio: "")]))
                 policy = .after(Calendar.current.date(byAdding: .minute, value: 15, to: Date())!)
                 break
             case .Success(let superSaiyanResponse):
@@ -48,7 +48,7 @@ struct SuperSaiyanStagesProvider: TimelineProvider {
 
 struct SuperSaiyanStagesEntry: TimelineEntry {
     let date: Date
-    let superSaiyanStages: [SuperSaiyanModelResponse]
+    let superSaiyanStages: [SuperSaiyanStage]
 }
 
 struct SuperSaiyanStagesWidgetEntryView : View {
@@ -57,13 +57,15 @@ struct SuperSaiyanStagesWidgetEntryView : View {
     var body: some View {
         VStack {
             ForEach(entry.superSaiyanStages, id: \.self) { stage in
-                if let url = URL(string: stage.url) {
+                HStack {
+                if let url = URL(string: stage.ssURL) {
                     URLImageView(url: url)
                         .padding()
                 }
-                Text(stage.title)
+                Text(stage.ssName)
                     .padding()
                 Spacer()
+                }
             }
         }
     }
@@ -84,7 +86,8 @@ struct SuperSaiyanStagesWidget: Widget {
 
 struct SuperSaiyanStagesWidget_Previews: PreviewProvider {
     static var previews: some View {
-        let stagePreview = SuperSaiyanModelResponse(url: "image", title: "placeholder", bio: "placeholder")
+        let stagePreview = SuperSaiyanStage(ssURL: "image", ssName: "placeholder", bio: "placeholder")
+        
         SuperSaiyanStagesWidgetEntryView(entry: SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [stagePreview, stagePreview, stagePreview]))
             .previewContext(WidgetPreviewContext(family: .systemLarge))
         

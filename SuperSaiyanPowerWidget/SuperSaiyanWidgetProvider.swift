@@ -9,19 +9,23 @@ import Foundation
 import SwiftUI
 
 enum SuperSaiyanProviderResponse {
-    case Success(response: [SuperSaiyanModelResponse])
+    case Success(response: [SuperSaiyanStage])
     case Failure
 }
 
 struct SuperSaiyanModelResponse: Decodable, Hashable {
-    var url: String
-    var title: String
+    var ssstages: [SuperSaiyanStage]
+}
+
+struct SuperSaiyanStage: Decodable, Hashable {
+    var ssURL: String
+    var ssName: String
     var bio: String
 }
 
 class SuperSaiyanWidgetProvider {
     static func loadSaiyanStages(completion: ((SuperSaiyanProviderResponse) -> Void)?) {
-        let urlString = ""
+        let urlString = "https://605cf4ab6d85de00170db5b1.mockapi.io/api/v1/characters"
         let url = URL(string: urlString)!
         let urlRequest = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
@@ -39,9 +43,9 @@ class SuperSaiyanWidgetProvider {
             return
         }
         
-        var superSaiyanModelResponse: [SuperSaiyanModelResponse]
+        var superSaiyanModelResponse: SuperSaiyanModelResponse
         do {
-            superSaiyanModelResponse = try JSONDecoder().decode([SuperSaiyanModelResponse].self, from: content)
+            superSaiyanModelResponse = try JSONDecoder().decode(SuperSaiyanModelResponse.self, from: content)
         } catch {
             print("error parsing URL from data")
             let response = SuperSaiyanProviderResponse.Failure
@@ -49,7 +53,7 @@ class SuperSaiyanWidgetProvider {
             return
         }
         
-        completion?(SuperSaiyanProviderResponse.Success(response: superSaiyanModelResponse))
+        completion?(SuperSaiyanProviderResponse.Success(response: superSaiyanModelResponse.ssstages))
 
     }
 }
