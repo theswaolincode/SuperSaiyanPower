@@ -10,7 +10,7 @@ import SwiftUI
 
 enum SuperSaiyanProviderResponse {
     case Success(response: [SuperSaiyanStage])
-    case Failure
+    case Failure(error: Error)
 }
 
 struct SuperSaiyanModelResponse: Decodable, Hashable {
@@ -38,7 +38,7 @@ class SuperSaiyanWidgetProvider {
         
         guard error == nil, let content = data else {
             print("error getting data from API")
-            let response = SuperSaiyanProviderResponse.Failure
+            let response = SuperSaiyanProviderResponse.Failure(error: error!)
             completion?(response)
             return
         }
@@ -48,7 +48,7 @@ class SuperSaiyanWidgetProvider {
             superSaiyanModelResponse = try JSONDecoder().decode(SuperSaiyanModelResponse.self, from: content)
         } catch {
             print("error parsing URL from data")
-            let response = SuperSaiyanProviderResponse.Failure
+            let response = SuperSaiyanProviderResponse.Failure(error: error)
             completion?(response)
             return
         }

@@ -28,8 +28,8 @@ struct SuperSaiyanStagesProvider: TimelineProvider {
             var policy: TimelineReloadPolicy
 
             switch saiyanStagesResponse {
-            case .Failure:
-                entries.append(SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanStage(ssURL: "", ssName: "", bio: "")]))
+            case .Failure(let error):
+                entries.append(SuperSaiyanStagesEntry(date: Date(), superSaiyanStages: [SuperSaiyanStage(ssURL: "image", ssName: "\(error.localizedDescription)", bio: "")]))
                 policy = .after(Calendar.current.date(byAdding: .minute, value: 15, to: Date())!)
                 break
             case .Success(let superSaiyanResponse):

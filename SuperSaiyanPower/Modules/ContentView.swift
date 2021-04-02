@@ -13,29 +13,28 @@ struct ContentView: View {
     @State var vegetaActive: Bool = false
     @State var trunksActive: Bool = false
     @State var gohanActive: Bool = false
-
     
     var body: some View {
         
         NavigationView {
             List {
                 NavigationLink(
-                    destination: DetailView(character: .goku),isActive: $gokuActive){
+                    destination: DetailView(character: .goku), isActive: $gokuActive){
                     TableRow(character: .goku)
                 }
                 
                 NavigationLink(
-                    destination: DetailView(character: .vegeta),isActive: $vegetaActive){
+                    destination: DetailView(character: .vegeta), isActive: $vegetaActive){
                     TableRow(character: .vegeta)
                 }
                 
                 NavigationLink(
-                    destination: DetailView(character: .trunks),isActive: $trunksActive){
+                    destination: DetailView(character: .trunks), isActive: $trunksActive){
                     TableRow(character: .trunks)
                 }
                 
                 NavigationLink(
-                    destination: DetailView(character: .gohan),isActive: $gohanActive){
+                    destination: DetailView(character: .gohan), isActive: $gohanActive){
                     TableRow(character: .gohan)
                 }
             }
