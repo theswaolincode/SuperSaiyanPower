@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  SaiyansView.swift
 //  SuperSaiyanPower
 //
 //  Created by Daniel Ayala on 17/3/21.
@@ -8,7 +8,7 @@
 import SwiftUI
 import WidgetKit
 
-struct ContentView: View {
+struct SaiyansView: View {
     
     @State var gokuActive: Bool = false
     @State var vegetaActive: Bool = false
@@ -71,24 +71,6 @@ struct ContentView: View {
     }
 }
 
-struct TableRow: View {
-    let character: CharacterDetail
-    
-    var body: some View {
-        HStack {
-            Image(uiImage: character.image)
-                .resizable()
-                .scaledToFit()
-            
-            Spacer()
-            
-            CircleView(kiPower:String(character.kiPower))
-            
-            Text(character.name)
-        }.frame(height: 200)
-    }
-}
-
 struct CircleView: View {
     let kiPower: String
     
@@ -113,8 +95,8 @@ struct CircleView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SaiyansView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SaiyansView()
     }
 }
