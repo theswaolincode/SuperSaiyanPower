@@ -10,11 +10,11 @@ import Foundation
 class SuperSaiyanPowerStorage: StorageManager {
     private let kSuperSaiyanPowerActivated = "SuperSaiyanPowerActivated"
 
-    func saveSuperSaiyanActivation(active: Bool) {
-        saveValue(active, forKey: kSuperSaiyanPowerActivated)
+    func saveSuperSaiyanActiveState(isActive: Bool) {
+        saveValue(isActive, forKey: kSuperSaiyanPowerActivated)
     }
 
-    func getSuperSaiyanActivation() -> Bool? {
+    func getSuperSaiyanActiveState() -> Bool? {
         return getValueForKey(kSuperSaiyanPowerActivated)
     }
 

@@ -26,7 +26,7 @@ struct Provider: IntentTimelineProvider {
         
         if configuration.saiyans == .showAll {
             var charactersArray = [CharacterDetail]()
-            let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActivation() ?? false
+            let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
             charactersArray = isSuperSaiyan ? CharacterDetail.superSaiyanCharacters : CharacterDetail.availableCharacters
             for (index, character) in charactersArray.enumerated() {
                 let entryDate = Calendar.current.date(byAdding: .minute, value: index, to: currentDate)!
@@ -43,7 +43,7 @@ struct Provider: IntentTimelineProvider {
     }
     
     func character(for configuration: ConfigurationIntent) -> CharacterDetail {
-        let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActivation() ?? false
+        let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
         let character: CharacterDetail
         switch configuration.saiyans {
         case .goku: character = isSuperSaiyan ? .superSaiyanGoku : .goku

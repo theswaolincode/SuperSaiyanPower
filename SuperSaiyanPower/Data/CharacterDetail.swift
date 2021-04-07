@@ -72,39 +72,39 @@ struct CharacterDetail: Hashable, Identifiable {
 
 extension CharacterDetail {
     static let superSaiyanGoku = CharacterDetail(
-        name: "Goku",
+        name: "Goku Super Saiyan 1st grade",
         avatar: "☁️",
         kiPower: 5000,
         heroType: "Super Saiyan",
         image: UIImage(named: "goku_super_saiyan")!,
-        bio: "",
+        bio: "The regular Super Saiya-jin transformation. Goku first achieves it on Namek following Kuririn's death at the hands of Freeza, and all major Saiya-jin characters also achieve this transformation throughout the course of Z.",
         url: URL(string: "game:///superSaiyanGoku")!)
     
     static let superSaiyanVegeta = CharacterDetail(
-        name: "Vegeta",
+        name: "Vegeta Super Saiyan 1st grade",
         avatar: "😎",
         kiPower: 4000,
         heroType: "Super Saiyan",
         image: UIImage(named: "vegeta_super_saiyan")!,
-        bio: "",
+        bio: "The regular Super Saiya-jin transformation. Goku first achieves it on Namek following Kuririn's death at the hands of Freeza, and all major Saiya-jin characters also achieve this transformation throughout the course of Z.",
         url: URL(string: "game:///superSaiyanVegeta")!)
     
     static let superSaiyanTrunks = CharacterDetail(
-        name: "Trunks",
+        name: "Trunks Super Saiyan 1st grade",
         avatar: "🦄",
         kiPower: 3000,
         heroType: "Super Saiyan",
         image: UIImage(named: "trunks_super_saiyan")!,
-        bio: "",
+        bio: "The regular Super Saiya-jin transformation. Goku first achieves it on Namek following Kuririn's death at the hands of Freeza, and all major Saiya-jin characters also achieve this transformation throughout the course of Z.",
         url: URL(string: "game:///superSaiyanTrunks")!)
     
     static let superSaiyanGohan = CharacterDetail(
-        name: "Gohan",
+        name: "Gohan Super Saiyan 1st grade",
         avatar: "🧸",
         kiPower: 3500,
         heroType: "Super Saiyan",
         image: UIImage(named: "gohan_super_saiyan")!,
-        bio: "",
+        bio: "The regular Super Saiya-jin transformation. Goku first achieves it on Namek following Kuririn's death at the hands of Freeza, and all major Saiya-jin characters also achieve this transformation throughout the course of Z.",
         url: URL(string: "game:///superSaiyanGohan")!)
     
     static let superSaiyanCharacters = [superSaiyanGoku, superSaiyanVegeta, superSaiyanTrunks, superSaiyanGohan]

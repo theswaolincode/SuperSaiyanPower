@@ -14,7 +14,7 @@ struct ContentView: View {
     @State var vegetaActive: Bool = false
     @State var trunksActive: Bool = false
     @State var gohanActive: Bool = false
-    @State private var isToggle : Bool = SuperSaiyanPowerStorage().getSuperSaiyanActivation() ?? false
+    @State private var isToggle : Bool = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
     
     var body: some View {
         NavigationView {
@@ -28,7 +28,7 @@ struct ContentView: View {
                 .background(isToggle ? Color.purple : Color.gray)
                 .cornerRadius(3.0)
                 .onChange(of: isToggle) { value in
-                    SuperSaiyanPowerStorage().saveSuperSaiyanActivation(active: isToggle)
+                    SuperSaiyanPowerStorage().saveSuperSaiyanActiveState(isActive: isToggle)
                     WidgetCenter.shared.reloadTimelines(ofKind: "SuperSaiyanPowerWidget")
                     print(value)
                 }
@@ -55,10 +55,17 @@ struct ContentView: View {
             }
             .navigationTitle("Super Saiyan Power")
             .onOpenURL(perform: { (url) in
-                self.gokuActive = url == CharacterDetail.goku.url
-                self.vegetaActive = url == CharacterDetail.vegeta.url
-                self.trunksActive = url == CharacterDetail.trunks.url
-                self.gohanActive = url == CharacterDetail.gohan.url
+                if isToggle {
+                    self.gokuActive = url == CharacterDetail.superSaiyanGoku.url
+                    self.vegetaActive = url == CharacterDetail.superSaiyanVegeta.url
+                    self.trunksActive = url == CharacterDetail.superSaiyanTrunks.url
+                    self.gohanActive = url == CharacterDetail.superSaiyanGohan.url
+                }else {
+                    self.gokuActive = url == CharacterDetail.goku.url
+                    self.vegetaActive = url == CharacterDetail.vegeta.url
+                    self.trunksActive = url == CharacterDetail.trunks.url
+                    self.gohanActive = url == CharacterDetail.gohan.url
+                }
             })
         }
     }

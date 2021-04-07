@@ -195,10 +195,10 @@
 		C4FAB684260207B5007036C5 /* SuperSaiyanPowerWidget */ = {
 			isa = PBXGroup;
 			children = (
-				C4EE468726170A6800299AC0 /* Widget Data */,
 				C4FAB685260207B5007036C5 /* SuperSaiyanPowerWidget.swift */,
 				C4C014A7260A49BC0054D912 /* SuperSaiyanStagesWidget.swift */,
 				C4FAB687260207B5007036C5 /* SuperSaiyanPowerWidget.intentdefinition */,
+				C4EE468726170A6800299AC0 /* Widget Data */,
 				C4EE468F26170AF500299AC0 /* Resources */,
 			);
 			path = SuperSaiyanPowerWidget;
