@@ -120,6 +120,11 @@
 					<string>Enum</string>
 					<key>INIntentParameterEnumTypeNamespace</key>
 					<string>88xZPY</string>
+					<key>INIntentParameterMetadata</key>
+					<dict>
+						<key>INIntentParameterMetadataDefaultValue</key>
+						<string>goku</string>
+					</dict>
 					<key>INIntentParameterName</key>
 					<string>saiyans</string>
 					<key>INIntentParameterPromptDialogs</key>

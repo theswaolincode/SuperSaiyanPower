@@ -98,15 +98,6 @@ struct SuperSaiyanStagesWidget_Previews: PreviewProvider {
     }
 }
 
-@main
-struct SuperSaiyanPowerBundle: WidgetBundle {
-    @WidgetBundleBuilder
-    var body: some Widget {
-        SuperSaiyanPowerWidget()
-        SuperSaiyanStagesWidget()
-    }
-}
-
 struct URLImageView: View {
     let url: URL
 

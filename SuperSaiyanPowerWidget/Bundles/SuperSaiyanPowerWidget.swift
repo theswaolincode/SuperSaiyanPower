@@ -23,10 +23,10 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
         let currentDate = Date()
-        
+        let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
+
         if configuration.saiyans == .showAll {
             var charactersArray = [CharacterDetail]()
-            let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
             charactersArray = isSuperSaiyan ? CharacterDetail.superSaiyanCharacters : CharacterDetail.availableCharacters
             for (index, character) in charactersArray.enumerated() {
                 let entryDate = Calendar.current.date(byAdding: .minute, value: index, to: currentDate)!
@@ -34,7 +34,7 @@ struct Provider: IntentTimelineProvider {
                 entries.append(SimpleEntry(date: entryDate, character: character, showAll: true))
             }
         }else {
-            let selectedCharacter = character(for: configuration)
+            let selectedCharacter = character(for: configuration, isSuperSaiyan: isSuperSaiyan)
             entries.append(SimpleEntry(date: currentDate, character: selectedCharacter))
         }
         
@@ -42,8 +42,7 @@ struct Provider: IntentTimelineProvider {
         completion(timeline)
     }
     
-    func character(for configuration: ConfigurationIntent) -> CharacterDetail {
-        let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
+    func character(for configuration: ConfigurationIntent, isSuperSaiyan: Bool) -> CharacterDetail {
         let character: CharacterDetail
         switch configuration.saiyans {
         case .goku: character = isSuperSaiyan ? .superSaiyanGoku : .goku
