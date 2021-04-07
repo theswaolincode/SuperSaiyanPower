@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
     
@@ -13,29 +14,43 @@ struct ContentView: View {
     @State var vegetaActive: Bool = false
     @State var trunksActive: Bool = false
     @State var gohanActive: Bool = false
+    @State private var isToggle : Bool = SuperSaiyanPowerStorage().getSuperSaiyanActivation() ?? false
     
     var body: some View {
-        
         NavigationView {
             List {
-                NavigationLink(
-                    destination: DetailView(character: .goku), isActive: $gokuActive){
-                    TableRow(character: .goku)
+                Toggle(isOn: $isToggle){
+                    Text("Activate Super Saiyan Power !!! ")
+                        .font(.title)
+                        .foregroundColor(Color.white)
+                    
+                }.padding()
+                .background(isToggle ? Color.purple : Color.gray)
+                .cornerRadius(3.0)
+                .onChange(of: isToggle) { value in
+                    SuperSaiyanPowerStorage().saveSuperSaiyanActivation(active: isToggle)
+                    WidgetCenter.shared.reloadTimelines(ofKind: "SuperSaiyanPowerWidget")
+                    print(value)
                 }
                 
                 NavigationLink(
-                    destination: DetailView(character: .vegeta), isActive: $vegetaActive){
-                    TableRow(character: .vegeta)
+                    destination: DetailView(character: isToggle ? .superSaiyanGoku : .goku), isActive: $gokuActive){
+                    TableRow(character: isToggle ? .superSaiyanGoku : .goku)
                 }
                 
                 NavigationLink(
-                    destination: DetailView(character: .trunks), isActive: $trunksActive){
-                    TableRow(character: .trunks)
+                    destination: DetailView(character: isToggle ? .superSaiyanVegeta : .vegeta), isActive: $vegetaActive){
+                    TableRow(character: isToggle ? .superSaiyanVegeta : .vegeta)
                 }
                 
                 NavigationLink(
-                    destination: DetailView(character: .gohan), isActive: $gohanActive){
-                    TableRow(character: .gohan)
+                    destination: DetailView(character: isToggle ? .superSaiyanTrunks : .trunks), isActive: $trunksActive){
+                    TableRow(character: isToggle ? .superSaiyanTrunks : .trunks)
+                }
+                
+                NavigationLink(
+                    destination: DetailView(character: isToggle ? .superSaiyanGohan : .gohan), isActive: $gohanActive){
+                    TableRow(character: isToggle ? .superSaiyanGohan : .gohan)
                 }
             }
             .navigationTitle("Super Saiyan Power")
@@ -46,7 +61,6 @@ struct ContentView: View {
                 self.gohanActive = url == CharacterDetail.gohan.url
             })
         }
-        
     }
 }
 

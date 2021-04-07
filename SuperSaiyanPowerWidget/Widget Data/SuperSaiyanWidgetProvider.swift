@@ -13,7 +13,7 @@ enum SuperSaiyanProviderResponse {
     case Failure(error: Error)
 }
 
-struct SuperSaiyanModelResponse: Decodable, Hashable {
+struct SuperSaiyanModelResponse: Decodable {
     var ssstages: [SuperSaiyanStage]
 }
 

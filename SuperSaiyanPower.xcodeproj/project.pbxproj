@@ -11,9 +11,13 @@
 		C41B071026170CC400B3E798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4FAB66D2602078F007036C5 /* Assets.xcassets */; };
 		C41B071526170CE200B3E798 /* CharacterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB698260208D7007036C5 /* CharacterDetail.swift */; };
 		C41B071F26170D8100B3E798 /* CharacterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB698260208D7007036C5 /* CharacterDetail.swift */; };
+		C4673E30261DA6140056CD34 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D7ACDE261CC77100F15B63 /* StorageManager.swift */; };
+		C4673E34261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4673E33261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift */; };
+		C4673E35261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4673E33261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift */; };
 		C46C9ADB2614D77C0064AC60 /* SuperSaiyanWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46C9ADA2614D77C0064AC60 /* SuperSaiyanWidgetProvider.swift */; };
 		C48528D72603B98C000051AB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48528D62603B98C000051AB /* DetailView.swift */; };
 		C4C014A8260A49BC0054D912 /* SuperSaiyanStagesWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C014A7260A49BC0054D912 /* SuperSaiyanStagesWidget.swift */; };
+		C4D7ACDF261CC77100F15B63 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D7ACDE261CC77100F15B63 /* StorageManager.swift */; };
 		C4FAB66A2602078E007036C5 /* SuperSaiyanPowerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB6692602078E007036C5 /* SuperSaiyanPowerApp.swift */; };
 		C4FAB66C2602078E007036C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB66B2602078E007036C5 /* ContentView.swift */; };
 		C4FAB6712602078F007036C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4FAB6702602078F007036C5 /* Preview Assets.xcassets */; };
@@ -50,9 +54,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C4673E33261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSaiyanPowerStorage.swift; sourceTree = "<group>"; };
+		C4673E3C261DAD220056CD34 /* SuperSaiyanPowerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SuperSaiyanPowerWidgetExtension.entitlements; sourceTree = "<group>"; };
 		C46C9ADA2614D77C0064AC60 /* SuperSaiyanWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSaiyanWidgetProvider.swift; sourceTree = "<group>"; };
 		C48528D62603B98C000051AB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C4C014A7260A49BC0054D912 /* SuperSaiyanStagesWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSaiyanStagesWidget.swift; sourceTree = "<group>"; };
+		C4D7ACDE261CC77100F15B63 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		C4FAB6662602078E007036C5 /* SuperSaiyanPower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SuperSaiyanPower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4FAB6692602078E007036C5 /* SuperSaiyanPowerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSaiyanPowerApp.swift; sourceTree = "<group>"; };
 		C4FAB66B2602078E007036C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -103,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				C4FAB698260208D7007036C5 /* CharacterDetail.swift */,
+				C4D7ACDE261CC77100F15B63 /* StorageManager.swift */,
+				C4673E33261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -136,6 +145,7 @@
 		C4FAB65D2602078E007036C5 = {
 			isa = PBXGroup;
 			children = (
+				C4673E3C261DAD220056CD34 /* SuperSaiyanPowerWidgetExtension.entitlements */,
 				C4FAB6682602078E007036C5 /* SuperSaiyanPower */,
 				C4FAB684260207B5007036C5 /* SuperSaiyanPowerWidget */,
 				C4FAB67F260207B5007036C5 /* Frameworks */,
@@ -297,6 +307,8 @@
 				C4FAB66C2602078E007036C5 /* ContentView.swift in Sources */,
 				C4FAB68C260207B6007036C5 /* SuperSaiyanPowerWidget.intentdefinition in Sources */,
 				C41B071526170CE200B3E798 /* CharacterDetail.swift in Sources */,
+				C4673E34261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift in Sources */,
+				C4D7ACDF261CC77100F15B63 /* StorageManager.swift in Sources */,
 				C48528D72603B98C000051AB /* DetailView.swift in Sources */,
 				C4FAB66A2602078E007036C5 /* SuperSaiyanPowerApp.swift in Sources */,
 			);
@@ -309,6 +321,8 @@
 				C4FAB686260207B5007036C5 /* SuperSaiyanPowerWidget.swift in Sources */,
 				C4FAB68B260207B6007036C5 /* SuperSaiyanPowerWidget.intentdefinition in Sources */,
 				C41B071F26170D8100B3E798 /* CharacterDetail.swift in Sources */,
+				C4673E35261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift in Sources */,
+				C4673E30261DA6140056CD34 /* StorageManager.swift in Sources */,
 				C4C014A8260A49BC0054D912 /* SuperSaiyanStagesWidget.swift in Sources */,
 				C46C9ADB2614D77C0064AC60 /* SuperSaiyanWidgetProvider.swift in Sources */,
 			);
@@ -494,6 +508,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SuperSaiyanPowerWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3WN2HPYHZR;
 				INFOPLIST_FILE = "$(SRCROOT)/SuperSaiyanPowerWidget/Resources/Info.plist";
@@ -515,6 +530,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = SuperSaiyanPowerWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3WN2HPYHZR;
 				INFOPLIST_FILE = "$(SRCROOT)/SuperSaiyanPowerWidget/Resources/Info.plist";
