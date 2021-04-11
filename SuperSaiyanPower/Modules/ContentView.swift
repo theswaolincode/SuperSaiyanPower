@@ -62,25 +62,6 @@ struct ContentView: View {
     }
 }
 
-struct TableRow: View {
-    let character: CharacterDetail
-    
-    var body: some View {
-        HStack {
-            Image(uiImage: character.image)
-                .resizable()
-                .scaledToFit()
-            
-            Spacer()
-            
-            CircleView(kiPower:String(character.kiPower))
-            
-            Text(character.name)
-        }.frame(height: 200)
-        .cornerRadius(8.0)
-    }
-}
-
 struct CircleView: View {
     let kiPower: String
     
