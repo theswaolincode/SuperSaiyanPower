@@ -10,64 +10,55 @@ import WidgetKit
 
 struct ContentView: View {
     
-    @State var gokuActive: Bool = false
-    @State var vegetaActive: Bool = false
-    @State var trunksActive: Bool = false
-    @State var gohanActive: Bool = false
+    @State var activeUUID: UUID?
+    
     @State private var isToggle : Bool = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
     
+    var characters : [CharacterDetail] {
+        return CharacterDetail.availableCharacters
+    }
+    
+    var superSaiyanCharacters : [CharacterDetail] {
+        return CharacterDetail.superSaiyanCharacters
+    }
+    
     var body: some View {
+        
         NavigationView {
-            List {
-                Toggle(isOn: $isToggle){
-                    Text("Activate Super Saiyan Power !!! ")
-                        .font(.title)
-                        .foregroundColor(Color.white)
-                    
-                }.padding()
-                .background(isToggle ? Color.purple : Color.gray)
-                .cornerRadius(3.0)
-                .onChange(of: isToggle) { value in
-                    SuperSaiyanPowerStorage().saveSuperSaiyanActiveState(isActive: isToggle)
-                    WidgetCenter.shared.reloadTimelines(ofKind: "SuperSaiyanPowerWidget")
-                    print(value)
+            List{
+                Section(header: Text("Settings")) {
+                    Toggle(isOn: $isToggle){
+                        Text("Activate Super Saiyan Power !!! ")
+                            .font(.title)
+                            .foregroundColor(Color.white)
+                        
+                    }
+                    .padding(.horizontal)
+                    .background(isToggle ? Color.purple : Color.gray.opacity(0.5))
+                    .cornerRadius(8.0)
+                    .onChange(of: isToggle) { value in
+                        SuperSaiyanPowerStorage().saveSuperSaiyanActiveState(isActive: isToggle)
+                        WidgetCenter.shared.reloadTimelines(ofKind: "SuperSaiyanPowerWidget")
+                        print(value)
+                    }
                 }
                 
-                NavigationLink(
-                    destination: DetailView(character: isToggle ? .superSaiyanGoku : .goku), isActive: $gokuActive){
-                    TableRow(character: isToggle ? .superSaiyanGoku : .goku)
-                }
-                
-                NavigationLink(
-                    destination: DetailView(character: isToggle ? .superSaiyanVegeta : .vegeta), isActive: $vegetaActive){
-                    TableRow(character: isToggle ? .superSaiyanVegeta : .vegeta)
-                }
-                
-                NavigationLink(
-                    destination: DetailView(character: isToggle ? .superSaiyanTrunks : .trunks), isActive: $trunksActive){
-                    TableRow(character: isToggle ? .superSaiyanTrunks : .trunks)
-                }
-                
-                NavigationLink(
-                    destination: DetailView(character: isToggle ? .superSaiyanGohan : .gohan), isActive: $gohanActive){
-                    TableRow(character: isToggle ? .superSaiyanGohan : .gohan)
+                Section(header: Text("Saiyans")) {
+                    let charactersList = isToggle ? superSaiyanCharacters : characters
+                    ForEach (charactersList) {character in
+                        NavigationLink(destination: DetailView(character: character), tag: character.id, selection: $activeUUID){
+                            TableRow(character: character)
+                        }
+                    }
                 }
             }
             .navigationTitle("Super Saiyan Power")
-            .onOpenURL(perform: { (url) in
-                if isToggle {
-                    self.gokuActive = url == CharacterDetail.superSaiyanGoku.url
-                    self.vegetaActive = url == CharacterDetail.superSaiyanVegeta.url
-                    self.trunksActive = url == CharacterDetail.superSaiyanTrunks.url
-                    self.gohanActive = url == CharacterDetail.superSaiyanGohan.url
-                }else {
-                    self.gokuActive = url == CharacterDetail.goku.url
-                    self.vegetaActive = url == CharacterDetail.vegeta.url
-                    self.trunksActive = url == CharacterDetail.trunks.url
-                    self.gohanActive = url == CharacterDetail.gohan.url
-                }
-            })
         }
+        .onOpenURL(perform: { (url) in
+            let charactersList = isToggle ? superSaiyanCharacters : characters
+            guard let activeCharacter = charactersList.filter({$0.url == url}).first else { return }
+            activeUUID = activeCharacter.id
+        })
     }
 }
 
@@ -86,6 +77,7 @@ struct TableRow: View {
             
             Text(character.name)
         }.frame(height: 200)
+        .cornerRadius(8.0)
     }
 }
 
@@ -100,7 +92,7 @@ struct CircleView: View {
                     LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)), Color(#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1))]), startPoint: .topTrailing, endPoint: .bottomLeading),
                     style: StrokeStyle(lineWidth: 10, lineCap: .round)
                 )
-                .frame(width: 150, height: 125)
+                .frame(width: 150, height: 100)
                 .padding(6)
             VStack {
                 Text("KI POWER")

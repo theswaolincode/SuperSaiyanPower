@@ -8,6 +8,7 @@
 import UIKit
 
 struct CharacterDetail: Hashable, Identifiable {
+    let id = UUID()
     let name: String
     let avatar: String
     let kiPower: Double
@@ -15,10 +16,6 @@ struct CharacterDetail: Hashable, Identifiable {
     let image: UIImage
     let bio: String
     let url: URL
-    
-    var id: String {
-        name
-    }
     
     static let goku = CharacterDetail(
         name: "Goku",
