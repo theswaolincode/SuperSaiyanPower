@@ -15,17 +15,19 @@ struct TableRow: View {
             Image(uiImage: character.image)
                 .resizable()
                 .scaledToFit()
+            Spacer(minLength: 20)
             
-            Spacer()
-            
+            CircleView(kiPower: String(character.kiPower))
+
+            Spacer(minLength: 20)
             Text(character.name)
-        }.padding(.all).frame(height: 200)
+        }.frame(height: 150)
     }
 }
 
 struct TableRow_Previews: PreviewProvider {
     static var previews: some View {
         TableRow(character: .goku)
-            .previewLayout(.fixed(width: 500, height: 200))
+            .previewLayout(.fixed(width: 400, height: 200))
     }
 }
