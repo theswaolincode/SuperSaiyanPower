@@ -53,12 +53,12 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Super Saiyan Power")
+            .onOpenURL(perform: { (url) in
+                let charactersList = isToggle ? superSaiyanCharacters : characters
+                guard let activeCharacter = charactersList.filter({$0.url == url}).first else { return }
+                activeUUID = activeCharacter.id
+            })
         }
-        .onOpenURL(perform: { (url) in
-            let charactersList = isToggle ? superSaiyanCharacters : characters
-            guard let activeCharacter = charactersList.filter({$0.url == url}).first else { return }
-            activeUUID = activeCharacter.id
-        })
     }
 }
 

@@ -36,7 +36,6 @@ struct DetailView: View {
                 Image(uiImage: character.image)
                     .resizable()
                     .scaledToFit()
-                
             }
         }
         
