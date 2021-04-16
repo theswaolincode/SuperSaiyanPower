@@ -24,7 +24,7 @@ struct Provider: IntentTimelineProvider {
         var entries: [SimpleEntry] = []
         let currentDate = Date()
         let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
-
+        
         if configuration.saiyans == .showAll {
             var charactersArray = [CharacterDetail]()
             charactersArray = isSuperSaiyan ? CharacterDetail.superSaiyanCharacters : CharacterDetail.availableCharacters
@@ -69,32 +69,29 @@ struct SuperSaiyanPowerWidgetEntryView : View {
         switch widgetFamily {
         case .systemMedium: systemMediumLayout(entry: entry)
         default: systemDefault(entry: entry)
-          
+            
         }
     }
 }
 
 struct systemDefault: View {
     var entry: Provider.Entry
-
+    
     var body: some View {
         ZStack {
-            Link(destination: entry.character.url) {
-                Image(uiImage: entry.character.image)
-                    .resizable()
-                    .scaledToFit()
-                    .widgetURL(entry.character.url)
-            }
+            Image(uiImage: entry.character.image)
+                .resizable()
+                .scaledToFit()
             if entry.showAll {
                 TimerView(date: entry.date)
             }
-        }
+        }.widgetURL(entry.character.url)
     }
 }
 
 struct systemMediumLayout: View{
     var entry: Provider.Entry
-
+    
     var body: some View {
         ZStack {
             HStack{
@@ -107,7 +104,6 @@ struct systemMediumLayout: View{
                         Image(uiImage: entry.character.image)
                             .resizable()
                             .scaledToFit()
-                            .widgetURL(entry.character.url)
                     }
                 }
                 DescriptionView(name: entry.character.name, kiPower: String(entry.character.kiPower), avatar: entry.character.avatar)
@@ -179,7 +175,7 @@ struct SuperSaiyanPowerWidget_Previews: PreviewProvider {
         
         SuperSaiyanPowerWidgetEntryView(entry: SimpleEntry(date: Date(), character: .goku))
             .previewContext(WidgetPreviewContext(family: .systemMedium))
-                
+        
         SuperSaiyanPowerWidgetEntryView(entry: SimpleEntry(date: Date(), character: .goku))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
             .redacted(reason: .placeholder)
