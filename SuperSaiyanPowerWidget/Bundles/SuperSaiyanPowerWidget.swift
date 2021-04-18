@@ -23,6 +23,7 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
         let currentDate = Date()
+        var policy: TimelineReloadPolicy
         let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
         
         if configuration.saiyans == .showAll {
@@ -33,12 +34,14 @@ struct Provider: IntentTimelineProvider {
                 print(entryDate)
                 entries.append(SimpleEntry(date: entryDate, character: character, showAll: true))
             }
+            policy = .atEnd
         }else {
             let selectedCharacter = character(for: configuration, isSuperSaiyan: isSuperSaiyan)
             entries.append(SimpleEntry(date: currentDate, character: selectedCharacter))
+            policy = .never
         }
         
-        let timeline = Timeline(entries: entries, policy: .atEnd)
+        let timeline = Timeline(entries: entries, policy: policy)
         completion(timeline)
     }
     
@@ -59,6 +62,7 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
     let character: CharacterDetail
     var showAll: Bool = false
+    var transform: Bool = false
 }
 
 struct SuperSaiyanPowerWidgetEntryView : View {
