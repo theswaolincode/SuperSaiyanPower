@@ -97,18 +97,3 @@ struct SuperSaiyanStagesWidget_Previews: PreviewProvider {
         
     }
 }
-
-struct URLImageView: View {
-    let url: URL
-
-    @ViewBuilder
-    var body: some View {
-        if let data = try? Data(contentsOf: url), let uiImage = UIImage(data: data) {
-            Image(uiImage: uiImage)
-                .resizable()
-        } else {
-            Image(systemName: "photo")
-        }
-    }
-}
-
