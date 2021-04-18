@@ -8,7 +8,7 @@
 import SwiftUI
 import WidgetKit
 
-struct ContentView: View {
+struct SaiyansView: View {
     
     @State var activeUUID: UUID?
     
@@ -64,6 +64,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        SaiyansView()
     }
 }
