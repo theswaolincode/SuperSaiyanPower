@@ -54,5 +54,6 @@ struct TableRow_Previews: PreviewProvider {
     static var previews: some View {
         TableRow(character: .goku)
             .previewLayout(.fixed(width: 400, height: 200))
+            .padding()
     }
 }
