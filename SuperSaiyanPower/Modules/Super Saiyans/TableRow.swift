@@ -2,11 +2,10 @@
 //  TableRow.swift
 //  SuperSaiyanPower
 //
-//  Created by Daniel Ayala on 27/3/21.
+//  Created by Daniel Ayala on 11/4/21.
 //
 
 import SwiftUI
-
 
 struct TableRow: View {
     let character: CharacterDetail
@@ -16,13 +15,13 @@ struct TableRow: View {
             Image(uiImage: character.image)
                 .resizable()
                 .scaledToFit()
-            
+                .frame(width: 80, height: 150)
             Spacer()
-            
-            CircleView(kiPower:String(character.kiPower))
-            
+            CircleView(kiPower: String(character.kiPower))
+            Spacer()
+
             Text(character.name)
-        }.frame(height: 200)
+        }.frame(height: 150)
     }
 }
 
@@ -54,6 +53,7 @@ struct CircleView: View {
 struct TableRow_Previews: PreviewProvider {
     static var previews: some View {
         TableRow(character: .goku)
+            .previewLayout(.fixed(width: 400, height: 200))
+            .padding()
     }
 }
-
