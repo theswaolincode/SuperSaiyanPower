@@ -22,27 +22,34 @@ struct Provider: IntentTimelineProvider {
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [SimpleEntry] = []
-        let currentDate = Date()
-        var policy: TimelineReloadPolicy
-        let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
+        let policy: TimelineReloadPolicy
         
+        policy = configuration.saiyans == .showAll ? .atEnd : .never
+        entries = buildEntries(for: configuration)
+        
+        let timeline = Timeline(entries: entries, policy: policy)
+        completion(timeline)
+    }
+    
+    func buildEntries(for configuration: ConfigurationIntent) -> [SimpleEntry] {
+        var entries: [SimpleEntry] = []
+        let isSuperSaiyan = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
+        let currentDate = Date()
+
         if configuration.saiyans == .showAll {
-            var charactersArray = [CharacterDetail]()
-            charactersArray = isSuperSaiyan ? CharacterDetail.superSaiyanCharacters : CharacterDetail.availableCharacters
-            for (index, character) in charactersArray.enumerated() {
+            var charactersList = [CharacterDetail]()
+            charactersList = isSuperSaiyan ? CharacterDetail.superSaiyanCharacters : CharacterDetail.availableCharacters
+            for (index, character) in charactersList.enumerated() {
                 let entryDate = Calendar.current.date(byAdding: .minute, value: index, to: currentDate)!
                 print(entryDate)
                 entries.append(SimpleEntry(date: entryDate, character: character, showAll: true))
             }
-            policy = .atEnd
+            return entries
         }else {
             let selectedCharacter = character(for: configuration, isSuperSaiyan: isSuperSaiyan)
             entries.append(SimpleEntry(date: currentDate, character: selectedCharacter))
-            policy = .never
+            return entries
         }
-        
-        let timeline = Timeline(entries: entries, policy: policy)
-        completion(timeline)
     }
     
     func character(for configuration: ConfigurationIntent, isSuperSaiyan: Bool) -> CharacterDetail {
@@ -62,7 +69,6 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
     let character: CharacterDetail
     var showAll: Bool = false
-    var transform: Bool = false
 }
 
 struct SuperSaiyanPowerWidgetEntryView : View {
@@ -71,93 +77,12 @@ struct SuperSaiyanPowerWidgetEntryView : View {
     
     var body: some View {
         switch widgetFamily {
-        case .systemMedium: systemMediumLayout(entry: entry)
-        default: systemDefault(entry: entry)
+        case .systemMedium: SystemMediumWidgetView(date: entry.date, character: entry.character, showAll: entry.showAll)
+        default: SystemDefaultWidgetView(date: entry.date, character: entry.character, showAll: entry.showAll)
             
         }
     }
 }
-
-struct systemDefault: View {
-    var entry: Provider.Entry
-    
-    var body: some View {
-        ZStack {
-            Image(uiImage: entry.character.image)
-                .resizable()
-                .scaledToFit()
-            if entry.showAll {
-                TimerView(date: entry.date)
-            }
-        }.widgetURL(entry.character.url)
-    }
-}
-
-struct systemMediumLayout: View{
-    var entry: Provider.Entry
-    
-    var body: some View {
-        ZStack {
-            HStack{
-                if entry.showAll {
-                    TimerView(date: entry.date)
-                        .frame(minWidth: 0, maxWidth: 60, minHeight: 0, maxHeight: 200)
-                }
-                VStack {
-                    Link(destination: entry.character.url) {
-                        Image(uiImage: entry.character.image)
-                            .resizable()
-                            .scaledToFit()
-                    }
-                }
-                DescriptionView(name: entry.character.name, kiPower: String(entry.character.kiPower), avatar: entry.character.avatar)
-            }
-            .padding(.all)
-        }
-    }
-}
-
-struct TimerView: View {
-    let date: Date
-    
-    var body: some View {
-        VStack {
-            Spacer()
-            Text(date, style: .timer)
-                .font(.caption)
-                .bold()
-                .padding(6)
-                .opacity(0.8)
-        }
-        .padding(6)
-    }
-}
-
-struct DescriptionView: View {
-    let name: String
-    let kiPower: String
-    let avatar: String
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text("\(name) \(avatar)")
-                    .font(.caption)
-                    .bold()
-                
-                Spacer()
-                
-                Text("KI: \(kiPower)")
-                    .font(.caption)
-                    .bold()
-            }
-            Spacer(minLength: 0)
-        }
-        .padding(.all)
-        .background(ContainerRelativeShape().fill(Color.gray.opacity(0.1)))
-    }
-}
-
 
 struct SuperSaiyanPowerWidget: Widget {
     let kind: String = "SuperSaiyanPowerWidget"
