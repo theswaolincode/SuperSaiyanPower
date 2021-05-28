@@ -29,6 +29,12 @@ struct CharactersView: View {
                         Text(character.bio)
                             .font(.title3)
                     }
+                    HStack {
+                        TextField("Placeholderrrrr", text: .constant(""))
+                        Divider()
+                        TextField("Placeholder", text: .constant(""))
+                    }
+                    
                 }
             }.onAppear(perform: {
                 if !self.firstAppear { return }

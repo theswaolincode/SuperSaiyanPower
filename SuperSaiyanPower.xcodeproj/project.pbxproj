@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C40E39C72660E08900965335 /* DragonBallCharacterSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40E39C62660E08900965335 /* DragonBallCharacterSelection.swift */; };
+		C40E39C92660E0EB00965335 /* CharacterSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C40E39C82660E0EB00965335 /* CharacterSelection.intentdefinition */; };
 		C41B070B26170CBE00B3E798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4FAB688260207B6007036C5 /* Assets.xcassets */; };
 		C41B071026170CC400B3E798 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4FAB66D2602078F007036C5 /* Assets.xcassets */; };
 		C41B071526170CE200B3E798 /* CharacterDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAB698260208D7007036C5 /* CharacterDetail.swift */; };
@@ -20,6 +22,10 @@
 		C4673E35261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4673E33261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift */; };
 		C46C9ADB2614D77C0064AC60 /* SuperSaiyanWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46C9ADA2614D77C0064AC60 /* SuperSaiyanWidgetProvider.swift */; };
 		C48528D72603B98C000051AB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48528D62603B98C000051AB /* DetailView.swift */; };
+		C4856E3D2660E4E700D0763F /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4856E2C2660E4A200D0763F /* Intents.framework */; };
+		C4856E402660E4E700D0763F /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4856E3F2660E4E700D0763F /* IntentHandler.swift */; };
+		C4856E442660E4E700D0763F /* IntentHandler.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C4856E3C2660E4E700D0763F /* IntentHandler.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C4856E482660E4F300D0763F /* CharacterSelection.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = C40E39C82660E0EB00965335 /* CharacterSelection.intentdefinition */; };
 		C48F71D0261E11AC00424529 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F71CF261E11AC00424529 /* MainView.swift */; };
 		C48F71E0261E120100424529 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F71DE261E120100424529 /* Provider.swift */; };
 		C48F71E1261E120100424529 /* CharactersProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48F71DF261E120100424529 /* CharactersProvider.swift */; };
@@ -41,6 +47,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C4856E422660E4E700D0763F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4FAB65E2602078E007036C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4856E3B2660E4E700D0763F;
+			remoteInfo = IntentHandler;
+		};
 		C4FAB68D260207B6007036C5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C4FAB65E2602078E007036C5 /* Project object */;
@@ -58,6 +71,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				C4FAB68F260207B6007036C5 /* SuperSaiyanPowerWidgetExtension.appex in Embed App Extensions */,
+				C4856E442660E4E700D0763F /* IntentHandler.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +79,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C40E39C62660E08900965335 /* DragonBallCharacterSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallCharacterSelection.swift; sourceTree = "<group>"; };
+		C40E39C82660E0EB00965335 /* CharacterSelection.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = CharacterSelection.intentdefinition; sourceTree = "<group>"; };
 		C42D9E83262C1EC2002DACF3 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		C42D9E87262C20AD002DACF3 /* SystemDefaultWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDefaultWidgetView.swift; sourceTree = "<group>"; };
 		C42D9E8D262C216A002DACF3 /* SystemMediumWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMediumWidgetView.swift; sourceTree = "<group>"; };
@@ -73,6 +89,10 @@
 		C4673E3C261DAD220056CD34 /* SuperSaiyanPowerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SuperSaiyanPowerWidgetExtension.entitlements; sourceTree = "<group>"; };
 		C46C9ADA2614D77C0064AC60 /* SuperSaiyanWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperSaiyanWidgetProvider.swift; sourceTree = "<group>"; };
 		C48528D62603B98C000051AB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		C4856E2C2660E4A200D0763F /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		C4856E3C2660E4E700D0763F /* IntentHandler.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = IntentHandler.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4856E3F2660E4E700D0763F /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		C4856E412660E4E700D0763F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C48F71CF261E11AC00424529 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C48F71DE261E120100424529 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		C48F71DF261E120100424529 /* CharactersProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersProvider.swift; sourceTree = "<group>"; };
@@ -100,6 +120,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C4856E392660E4E700D0763F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4856E3D2660E4E700D0763F /* Intents.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4FAB6632602078E007036C5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -157,6 +185,15 @@
 			path = "SuperSaiyanStagesWidget Views";
 			sourceTree = "<group>";
 		};
+		C4856E3E2660E4E700D0763F /* IntentHandler */ = {
+			isa = PBXGroup;
+			children = (
+				C4856E3F2660E4E700D0763F /* IntentHandler.swift */,
+				C4856E412660E4E700D0763F /* Info.plist */,
+			);
+			path = IntentHandler;
+			sourceTree = "<group>";
+		};
 		C48F71CE261E118500424529 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +235,7 @@
 			children = (
 				C4FAB685260207B5007036C5 /* SuperSaiyanPowerWidget.swift */,
 				C4C014A7260A49BC0054D912 /* SuperSaiyanStagesWidget.swift */,
+				C40E39C62660E08900965335 /* DragonBallCharacterSelection.swift */,
 			);
 			path = Bundles;
 			sourceTree = "<group>";
@@ -233,6 +271,7 @@
 			children = (
 				C4FAB6682602078E007036C5 /* SuperSaiyanPower */,
 				C4FAB684260207B5007036C5 /* SuperSaiyanPowerWidget */,
+				C4856E3E2660E4E700D0763F /* IntentHandler */,
 				C4FAB67F260207B5007036C5 /* Frameworks */,
 				C4FAB6672602078E007036C5 /* Products */,
 			);
@@ -243,6 +282,7 @@
 			children = (
 				C4FAB6662602078E007036C5 /* SuperSaiyanPower.app */,
 				C4FAB67E260207B5007036C5 /* SuperSaiyanPowerWidgetExtension.appex */,
+				C4856E3C2660E4E700D0763F /* IntentHandler.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -274,6 +314,7 @@
 			children = (
 				C4FAB680260207B5007036C5 /* WidgetKit.framework */,
 				C4FAB682260207B5007036C5 /* SwiftUI.framework */,
+				C4856E2C2660E4A200D0763F /* Intents.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -283,6 +324,7 @@
 			children = (
 				C4673E3C261DAD220056CD34 /* SuperSaiyanPowerWidgetExtension.entitlements */,
 				C4FAB687260207B5007036C5 /* SuperSaiyanPowerWidget.intentdefinition */,
+				C40E39C82660E0EB00965335 /* CharacterSelection.intentdefinition */,
 				C4B3BCC9261DC380000B8D12 /* SuperSaiyanPowerWidgetBundle.swift */,
 				C4B3BCC4261DC343000B8D12 /* Bundles */,
 				C42D9E82262C1E9B002DACF3 /* SuperSaiyanPowerWidget Views */,
@@ -296,6 +338,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C4856E3B2660E4E700D0763F /* IntentHandler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4856E452660E4E700D0763F /* Build configuration list for PBXNativeTarget "IntentHandler" */;
+			buildPhases = (
+				C4856E382660E4E700D0763F /* Sources */,
+				C4856E392660E4E700D0763F /* Frameworks */,
+				C4856E3A2660E4E700D0763F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IntentHandler;
+			productName = IntentHandler;
+			productReference = C4856E3C2660E4E700D0763F /* IntentHandler.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C4FAB6652602078E007036C5 /* SuperSaiyanPower */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4FAB6752602078F007036C5 /* Build configuration list for PBXNativeTarget "SuperSaiyanPower" */;
@@ -309,6 +368,7 @@
 			);
 			dependencies = (
 				C4FAB68E260207B6007036C5 /* PBXTargetDependency */,
+				C4856E432660E4E700D0763F /* PBXTargetDependency */,
 			);
 			name = SuperSaiyanPower;
 			productName = SuperSaiyanPower;
@@ -338,9 +398,12 @@
 		C4FAB65E2602078E007036C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					C4856E3B2660E4E700D0763F = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					C4FAB6652602078E007036C5 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -364,11 +427,19 @@
 			targets = (
 				C4FAB6652602078E007036C5 /* SuperSaiyanPower */,
 				C4FAB67D260207B5007036C5 /* SuperSaiyanPowerWidgetExtension */,
+				C4856E3B2660E4E700D0763F /* IntentHandler */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C4856E3A2660E4E700D0763F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4FAB6642602078E007036C5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -389,6 +460,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C4856E382660E4E700D0763F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4856E402660E4E700D0763F /* IntentHandler.swift in Sources */,
+				C4856E482660E4F300D0763F /* CharacterSelection.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C4FAB6622602078E007036C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -420,17 +500,24 @@
 				C4FAB68B260207B6007036C5 /* SuperSaiyanPowerWidget.intentdefinition in Sources */,
 				C41B071F26170D8100B3E798 /* CharacterDetail.swift in Sources */,
 				C4673E35261DA72C0056CD34 /* SuperSaiyanPowerStorage.swift in Sources */,
+				C40E39C72660E08900965335 /* DragonBallCharacterSelection.swift in Sources */,
 				C4B3BCCA261DC380000B8D12 /* SuperSaiyanPowerWidgetBundle.swift in Sources */,
 				C4673E30261DA6140056CD34 /* StorageManager.swift in Sources */,
 				C4C014A8260A49BC0054D912 /* SuperSaiyanStagesWidget.swift in Sources */,
 				C46C9ADB2614D77C0064AC60 /* SuperSaiyanWidgetProvider.swift in Sources */,
 				C42D9E88262C20AD002DACF3 /* SystemDefaultWidgetView.swift in Sources */,
+				C40E39C92660E0EB00965335 /* CharacterSelection.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C4856E432660E4E700D0763F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4856E3B2660E4E700D0763F /* IntentHandler */;
+			targetProxy = C4856E422660E4E700D0763F /* PBXContainerItemProxy */;
+		};
 		C4FAB68E260207B6007036C5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C4FAB67D260207B5007036C5 /* SuperSaiyanPowerWidgetExtension */;
@@ -439,6 +526,46 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		C4856E462660E4E700D0763F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3WN2HPYHZR;
+				INFOPLIST_FILE = IntentHandler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.interactivedreams.SuperSaiyanPower.IntentHandler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C4856E472660E4E700D0763F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3WN2HPYHZR;
+				INFOPLIST_FILE = IntentHandler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.interactivedreams.SuperSaiyanPower.IntentHandler;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C4FAB6732602078F007036C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -650,6 +777,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C4856E452660E4E700D0763F /* Build configuration list for PBXNativeTarget "IntentHandler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4856E462660E4E700D0763F /* Debug */,
+				C4856E472660E4E700D0763F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C4FAB6612602078E007036C5 /* Build configuration list for PBXProject "SuperSaiyanPower" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

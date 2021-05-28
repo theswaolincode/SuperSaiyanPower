@@ -23,7 +23,6 @@ struct SaiyansView: View {
     }
     
     var body: some View {
-        
         NavigationView {
             List{
                 Section(header: Text("Settings")) {
