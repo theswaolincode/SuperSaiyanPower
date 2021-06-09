@@ -9,7 +9,7 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>l8nuf1</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>20E241</string>
+	<string>20F71</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
 	<string>12E262</string>
 	<key>INIntentDefinitionToolsVersion</key>
@@ -33,7 +33,7 @@
 			<integer>2</integer>
 			<key>INIntentManagedParameterCombinations</key>
 			<dict>
-				<key>Character</key>
+				<key>character</key>
 				<dict>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
@@ -55,7 +55,7 @@
 					<key>INIntentParameterDisplayPriority</key>
 					<integer>1</integer>
 					<key>INIntentParameterName</key>
-					<string>Character</string>
+					<string>character</string>
 					<key>INIntentParameterObjectType</key>
 					<string>Character</string>
 					<key>INIntentParameterObjectTypeNamespace</key>
