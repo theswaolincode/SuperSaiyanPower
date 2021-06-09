@@ -54,7 +54,6 @@ class SuperSaiyanWidgetProvider {
         }
         
         completion?(SuperSaiyanProviderResponse.Success(response: superSaiyanModelResponse.ssstages))
-
     }
 }
 
