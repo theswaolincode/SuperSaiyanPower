@@ -36,7 +36,8 @@ struct DragonBallCharacterSelection: View {
     var entry: DragonBallCharacterSelectionProvider.Entry
 
     var body: some View {
-        Text("Hola")
+        
+        Text("\(entry.config.character?.displayString ?? "Character")")
     }
 }
     

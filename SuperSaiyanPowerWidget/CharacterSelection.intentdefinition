@@ -75,6 +75,8 @@
 							<string>Primary</string>
 						</dict>
 					</array>
+					<key>INIntentParameterSupportsDynamicEnumeration</key>
+					<true/>
 					<key>INIntentParameterTag</key>
 					<integer>2</integer>
 					<key>INIntentParameterType</key>
@@ -115,7 +117,7 @@
 			<key>INTypeDisplayNameID</key>
 			<string>jwMovk</string>
 			<key>INTypeLastPropertyTag</key>
-			<integer>100</integer>
+			<integer>102</integer>
 			<key>INTypeName</key>
 			<string>Character</string>
 			<key>INTypeProperties</key>
@@ -169,6 +171,20 @@
 					<integer>4</integer>
 					<key>INTypePropertyType</key>
 					<string>SpeakableString</string>
+				</dict>
+				<dict>
+					<key>INTypePropertyDisplayName</key>
+					<string>Bio</string>
+					<key>INTypePropertyDisplayNameID</key>
+					<string>zQVXVh</string>
+					<key>INTypePropertyDisplayPriority</key>
+					<integer>5</integer>
+					<key>INTypePropertyName</key>
+					<string>bio</string>
+					<key>INTypePropertyTag</key>
+					<integer>102</integer>
+					<key>INTypePropertyType</key>
+					<string>String</string>
 				</dict>
 			</array>
 		</dict>

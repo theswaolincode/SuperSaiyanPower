@@ -11,6 +11,29 @@ import SwiftUI
 
 
 class IntentHandler: INExtension, CharacterSelectionIntentHandling {
+    func provideCharacterOptionsCollection(for intent: CharacterSelectionIntent, with completion: @escaping (INObjectCollection<Character>?, Error?) -> Void) {
+        var charactersList = [DGCharacter]()
+        
+        DGCharactersWidgetProvider.loadDGCharacters { response in
+            switch response {
+            case .Failure(let error):
+                
+                let collection = INObjectCollection(items: [Character(identifier: "\(error.localizedDescription)", display: "Failed")])
+                completion(collection, nil)
+                
+            case .Success(let superSaiyanResponse):
+                charactersList = superSaiyanResponse
+                let characters: [Character] = charactersList.map { character in
+                    let hero = Character(identifier: character.id, display: character.name)
+                    return hero
+                }
+                
+                let collection = INObjectCollection(items: characters)
+                completion(collection, nil)
+            }
+        }
+    }
+    
     
     override func handler(for intent: INIntent) -> Any {
         // This is the default implementation.  If you want different objects to handle different intents,
@@ -19,30 +42,7 @@ class IntentHandler: INExtension, CharacterSelectionIntentHandling {
     }
     
     
-    func provideDGCharacters(for intent: CharacterSelectionIntent, with completion: @escaping (INObjectCollection<Character>?, Error?) -> Void) {
-        
-        var charactersList = [DGCharacter]()
-        
-        DGCharactersWidgetProvider.loadDGCharacters { response in
-            switch response {
-            case .Failure(let error):
-                charactersList = [DGCharacter(id: error.localizedDescription, name: "Failed", bio: "UPS")]
-            case .Success(let superSaiyanResponse):
-                charactersList = superSaiyanResponse
-            }
-        }
-        let characters: [Character] = charactersList.map { character in
-            let hero = Character(identifier: character.id, display: character.name)
-
-            return hero
-        }
-        
-        let collection = INObjectCollection(items: characters)
-        
-        completion(collection, nil)
-        
-    }
-
+    
     
 }
 
@@ -92,7 +92,7 @@ class DGCharactersWidgetProvider {
         }
         
         completion?(DGCharactersProviderResponse.Success(response: dCharactersModelResponse.characters))
-
+        
     }
 }
 
