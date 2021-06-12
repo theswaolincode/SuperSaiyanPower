@@ -25,6 +25,7 @@ class IntentHandler: INExtension, CharacterSelectionIntentHandling {
                 charactersList = superSaiyanResponse
                 let characters: [Character] = charactersList.map { character in
                     let hero = Character(identifier: character.id, display: character.name)
+                    hero.bio = character.bio
                     return hero
                 }
                 

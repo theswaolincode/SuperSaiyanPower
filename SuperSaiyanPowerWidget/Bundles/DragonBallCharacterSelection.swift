@@ -37,7 +37,12 @@ struct DragonBallCharacterSelection: View {
 
     var body: some View {
         
-        Text("\(entry.config.character?.displayString ?? "Character")")
+        VStack(spacing: 10) {
+            Text("\(entry.config.character?.displayString ?? "Character")")
+            Text("\(entry.config.character?.bio ?? "Bio")")
+                .minimumScaleFactor(0.8)
+        }
+        .padding()
     }
 }
     
