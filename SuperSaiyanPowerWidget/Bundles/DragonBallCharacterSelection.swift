@@ -23,7 +23,7 @@ struct DragonBallCharacterSelectionProvider: IntentTimelineProvider {
         var entries: [DragonBallCharacterSelectionEntry] = []
 
         entries.append(DragonBallCharacterSelectionEntry(date: Date(), config: configuration))
-        completion(Timeline(entries: entries, policy: .atEnd))
+        completion(Timeline(entries: entries, policy: .never))
     }
 }
 
@@ -31,7 +31,7 @@ struct DragonBallCharacterSelectionEntry: TimelineEntry {
     let date: Date
     let config: CharacterSelectionIntent
 }
-
+ 
 struct DragonBallCharacterSelection: View {
     var entry: DragonBallCharacterSelectionProvider.Entry
 
@@ -41,6 +41,7 @@ struct DragonBallCharacterSelection: View {
             Text("\(entry.config.character?.displayString ?? "Character")")
             Text("\(entry.config.character?.bio ?? "Bio")")
                 .minimumScaleFactor(0.8)
+            
         }
         .padding()
     }
