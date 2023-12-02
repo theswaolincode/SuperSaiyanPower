@@ -1,3 +1,3 @@
 # SuperSaiyanPower
 
-iOS 14 Widgets with SwiftUI
+iOS 14 Widgets with SwiftUI + Simple live activity
