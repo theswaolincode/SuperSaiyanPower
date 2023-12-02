@@ -44,6 +44,7 @@ struct DragonBallCharacterSelection: View {
             
         }
         .padding()
+        .containerBackground(for: .widget) { }
     }
 }
     

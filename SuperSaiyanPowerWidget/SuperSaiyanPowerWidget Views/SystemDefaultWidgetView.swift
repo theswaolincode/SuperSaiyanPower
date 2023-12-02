@@ -21,7 +21,9 @@ struct SystemDefaultWidgetView: View {
             if showAll {
                 TimerView(date: date)
             }
-        }.widgetURL(character.url)
+        }
+        .widgetURL(character.url)
+        .containerBackground(for: .widget) { }
     }
 }
 

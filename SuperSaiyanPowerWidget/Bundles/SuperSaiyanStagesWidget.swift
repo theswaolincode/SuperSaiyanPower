@@ -68,6 +68,7 @@ struct SuperSaiyanStagesWidgetEntryView : View {
                 }
             }
         }
+        .containerBackground(for: .widget) { }
     }
 }
 

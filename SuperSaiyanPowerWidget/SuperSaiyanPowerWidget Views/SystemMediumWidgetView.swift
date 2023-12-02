@@ -31,6 +31,7 @@ struct SystemMediumWidgetView: View{
             }
             .padding(.all)
         }
+        .containerBackground(for: .widget) { }
     }
 }
 

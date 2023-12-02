@@ -15,6 +15,7 @@ struct SuperSaiyanPowerWidgetBundle: WidgetBundle {
         SuperSaiyanPowerWidget()
         SuperSaiyanStagesWidget()
         DragonBallCharacterSelectionWidget()
+        SuperSaiyanLiveWidget()
     }
 }
 

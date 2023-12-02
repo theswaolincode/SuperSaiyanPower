@@ -7,11 +7,10 @@
 
 import SwiftUI
 import WidgetKit
+import ActivityKit
 
 struct SaiyansView: View {
-    
     @State var activeUUID: UUID?
-    
     @State private var isToggle : Bool = SuperSaiyanPowerStorage().getSuperSaiyanActiveState() ?? false
     
     var characters : [CharacterDetail] {
@@ -35,13 +34,10 @@ struct SaiyansView: View {
                     .padding(.horizontal)
                     .background(isToggle ? Color.purple : Color.gray.opacity(0.5))
                     .cornerRadius(8.0)
-                    .onChange(of: isToggle) { value in
-                        SuperSaiyanPowerStorage().saveSuperSaiyanActiveState(isActive: isToggle)
-                        WidgetCenter.shared.reloadTimelines(ofKind: "SuperSaiyanPowerWidget")
-                        print(value)
+                    .onChange(of: isToggle) {
+                        self.toggleState()
                     }
                 }
-                
                 Section(header: Text("Saiyans")) {
                     let charactersList = isToggle ? superSaiyanCharacters : characters
                     ForEach (charactersList) {character in
@@ -57,6 +53,26 @@ struct SaiyansView: View {
                 guard let activeCharacter = charactersList.filter({$0.url == url}).first else { return }
                 activeUUID = activeCharacter.id
             })
+        }
+    }
+    
+    private func toggleState() {
+        if isToggle { triggerActivity() }
+        SuperSaiyanPowerStorage().saveSuperSaiyanActiveState(isActive: isToggle)
+        WidgetCenter.shared.reloadTimelines(ofKind: "SuperSaiyanPowerWidget")
+    }
+    
+    private func triggerActivity() {
+        let superSaiyanActivityAttr = SuperSaiyanActivityAttributes(description: "A great power takes a great responsability")
+        let initialContentState = SuperSaiyanActivityAttributes.SuperSaiyanActivityStatus(saiyanName: "Dragon Ball", superSaiyanTimer: Date()...Date().addingTimeInterval(1 * 60))
+                                                  
+        do {
+            let superSaiyanActivity = try Activity<SuperSaiyanActivityAttributes>.request(
+                attributes: superSaiyanActivityAttr,
+                contentState: initialContentState,
+                pushType: nil)
+        } catch (let error) {
+            print(error.localizedDescription)
         }
     }
 }
